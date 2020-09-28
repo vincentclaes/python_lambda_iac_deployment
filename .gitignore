@@ -21,3 +21,4 @@ venv.bak/
 .cdk.staging/
 python_lambda_iac_deployment/cdk.out/
 .idea/
+cdk.out/
