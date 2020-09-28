@@ -2,16 +2,13 @@ from aws_cdk import (
     core,
     aws_lambda as _lambda,
     aws_apigateway as apigw,
+    aws_s3_assets
 )
 
 from python_lambda_iac_deployment.deployment.hitcounter import HitCounter
 from python_lambda_iac_deployment.deployment.glue_job_construct import (
     MyDataScienceStack,
 )
-from python_lambda_iac_deployment import lambda_function
-
-lambda_function
-
 
 class CdkworkshopStack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
@@ -42,3 +39,4 @@ class CdkworkshopStack(core.Stack):
         )
 
         glue_job = MyDataScienceStack(self, "GlueJob")
+

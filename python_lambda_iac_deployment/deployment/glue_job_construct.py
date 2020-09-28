@@ -1,4 +1,4 @@
-from aws_cdk import aws_iam as iam, aws_glue as glue, core, aws_s3_assets
+from aws_cdk import aws_iam as iam, aws_glue as glue, core, aws_s3_deployment, aws_s3
 import os
 from python_lambda_iac_deployment import ROOT_DIR
 
@@ -26,5 +26,12 @@ class MyDataScienceStack(core.Construct):
             ),
             glue_version="2.0",
         )
-
-        aws_s3_assets.Asset(self, "glue-asssets", path=os.path.join(ROOT_DIR, "glue"))
+        #
+        # file_asset = aws_s3_assets.Asset(self, "glue-asssets", path=os.path.join(ROOT_DIR, "glue"))
+        # print(file_asset.bucket)
+        bucket_glue = aws_s3.Bucket(self, "BucketGlue")
+        # file_asset = aws_s3_assets.Asset(self, "GlueAssets", path="/Users/vincent/Workspace/python_lambda_iac_deployment/python_lambda_iac_deployment/glue/glue_job.py")
+        aws_s3_deployment.BucketDeployment(self, "GlueJobDeployment",
+                                           sources=[aws_s3_deployment.Source.asset("/Users/vincent/Workspace/python_lambda_iac_deployment/python_lambda_iac_deployment/glue")],
+                                           destination_bucket=bucket_glue,
+                                           destination_key_prefix="jobs")

@@ -7,7 +7,7 @@ from python_lambda_iac_deployment.deployment.cdkworkshop_stack import Cdkworksho
 
 app = core.App()
 CdkworkshopStack(
-    app, "python_lambda_iac_deployment", env={"region": "eu-central-1", "account": "077590795309"}
+    app, "python-lambda-iac-deployment", env={"region": "eu-central-1", "account": "077590795309"}
 )
 
 app.synth()

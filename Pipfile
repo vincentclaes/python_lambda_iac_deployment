@@ -11,7 +11,10 @@ aws-cdk-aws-lambda = "*"
 aws-cdk-aws-glue = "*"
 aws-cdk-aws-apigateway = "*"
 aws-cdk-aws-dynamodb = "*"
+aws-cdk-aws-s3-deployment = "*"
 boto3 = "*"
+aws-cdk-aws-s3 = "*"
+pyspark = "*"
 
 [requires]
 python_version = "3.6"
